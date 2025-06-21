@@ -1,0 +1,83 @@
+.main-page {
+  min-height: 100vh;
+  background-size: contain; /* No zoom/cropping */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #000; /* Fills space around image if not full width/height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: background-image 0.8s ease-in-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-box {
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(6px); /* Modern glass effect */
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+h2 {
+  color: #1a1a1a;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h4 {
+  color: #3a3a3a;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+h5 {
+  color: #4a4a4a;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.form-check-label,
+.form-select,
+.alert {
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-check-input:checked {
+  background-color: #008000;
+  border-color: #008000;
+}
+
+.alert {
+  background-color: #d6f5dc;
+  border: 1px solid #a7e6b2;
+  color: #276738;
+  margin-top: 1rem;
+}
+
+button.btn {
+  margin-top: 1rem;
+  background-color: #008000;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.btn:hover {
+  background-color: #006400;
+}
