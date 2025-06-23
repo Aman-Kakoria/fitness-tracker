@@ -1,83 +1,121 @@
 .main-page {
   min-height: 100vh;
-  background-size: contain; /* No zoom/cropping */
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #000; /* Fills space around image if not full width/height */
+  background-position: center;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 2rem;
-  transition: background-image 0.8s ease-in-out;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  transition: background-image 1s ease-in-out;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 1.5rem;
 }
 
-.main-box {
-  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(6px); /* Modern glass effect */
-  max-width: 400px;
+.main-glass-box {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
   width: 100%;
+  color: #fff;
   text-align: center;
 }
 
-h2 {
-  color: #1a1a1a;
+.main-glass-box h2 {
   font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 0.6rem;
+  color: #ffffff;
 }
 
-h4 {
-  color: #3a3a3a;
-  font-size: 1.2rem;
-  margin-top: 1rem;
+.tagline {
+  font-size: 1.1rem;
+  color: #e0f7fa;
+  margin-bottom: 1.5rem;
 }
 
-h5 {
-  color: #4a4a4a;
-  font-weight: 600;
+.join-stats {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #f1f1f1;
+}
+
+.form-section {
+  text-align: left;
+  margin-bottom: 1.4rem;
+}
+
+.form-section label {
+  display: block;
+  font-weight: 500;
   margin-bottom: 0.5rem;
+  color: #f2f2f2;
 }
 
-.lead {
-  font-size: 1.05rem;
-  color: #444;
-  margin-bottom: 1rem;
+.radio-group {
+  display: flex;
+  gap: 1rem;
 }
 
-.form-check-label,
-.form-select,
-.alert {
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 1rem;
-  color: #333;
+  color: #fff;
 }
 
-.form-check-input:checked {
-  background-color: #008000;
-  border-color: #008000;
+.radio-label input {
+  accent-color: #00e676;
 }
 
-.alert {
-  background-color: #d6f5dc;
-  border: 1px solid #a7e6b2;
-  color: #276738;
-  margin-top: 1rem;
-}
-
-button.btn {
-  margin-top: 1rem;
-  background-color: #008000;
-  color: white;
+.goal-select {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 10px;
   border: none;
-  padding: 0.6rem 1.4rem;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #333;
   font-size: 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-button.btn:hover {
-  background-color: #006400;
+.goal-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00e67655;
+}
+
+.selection-msg {
+  background-color: rgba(76, 175, 80, 0.15);
+  border-left: 4px solid #4caf50;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #d4ffd6;
+}
+
+.continue-btn {
+  background-color: #00e676;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.continue-btn:hover {
+  background-color: #00c853;
+  transform: translateY(-2px);
+}
+
+.continue-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
 }

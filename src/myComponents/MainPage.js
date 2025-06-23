@@ -3,30 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import './MainPage.css';
 
 export default function MainPage() {
-  const images = [
-    '/image.png',
-    '/img22.png',
-  ];
+  const images = ['/image.png', '/img22.png'];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [gender, setGender] = useState('');
   const [goal, setGoal] = useState('');
-  const navigate = useNavigate(); // ✅ Navigation hook
+  const navigate = useNavigate();
 
-  // Change image every 2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        (prevIndex + 1) % images.length
-      );
-    }, 2000);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
-  // ✅ Redirect function
   const handleContinue = () => {
     if (gender && goal) {
-      navigate("/signin"); // Redirects to SignIn page
+      navigate('/signin');
     }
   };
 
@@ -35,42 +28,38 @@ export default function MainPage() {
       className="main-page"
       style={{ backgroundImage: `url(${images[currentImageIndex]})` }}
     >
-      <div className="main-box text-center">
-        <h2 className="mb-4">Welcome to FitTrack 🏋️</h2>
-        <p className="lead">
-          Track your workouts, stay healthy, and achieve your goals.
-        </p>
+      <div className="main-glass-box">
+        <h2>Welcome to FitTrack</h2>
+        <p className="tagline">Track workouts, stay healthy & crush your goals!</p>
 
-        <div className="my-4">
-          <h4>🔥 1345 Clients have joined FitTrack!</h4>
+        <div className="join-stats">1345 users joined FitTrack</div>
+
+        <div className="form-section">
+          <label>Choose your gender:</label>
+          <div className="radio-group">
+            {['Male', 'Female', 'Other'].map((g) => (
+              <label key={g} className="radio-label">
+                <input
+                  type="radio"
+                  name="gender"
+                  value={g}
+                  checked={gender === g}
+                  onChange={(e) => setGender(e.target.value)}
+                />
+                {g}
+              </label>
+            ))}
+          </div>
         </div>
 
-        <div className="mb-4 text-start">
-          <h5>Choose your gender:</h5>
-          {['Male', 'Female', 'Other'].map((g) => (
-            <div className="form-check" key={g}>
-              <input
-                className="form-check-input"
-                type="radio"
-                name="gender"
-                value={g}
-                id={g}
-                checked={gender === g}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              <label className="form-check-label" htmlFor={g}>{g}</label>
-            </div>
-          ))}
-        </div>
-
-        <div className="mb-4 text-start">
-          <h5>Select your goal:</h5>
+        <div className="form-section">
+          <label>Select your goal:</label>
           <select
-            className="form-select"
+            className="goal-select"
             value={goal}
             onChange={(e) => setGoal(e.target.value)}
           >
-            <option value="">-- Select Goal --</option>
+            <option value="">-- Choose Goal --</option>
             <option value="Weight Loss">Weight Loss</option>
             <option value="Muscle Gain">Muscle Gain</option>
             <option value="Stay Fit">Stay Fit</option>
@@ -79,20 +68,18 @@ export default function MainPage() {
         </div>
 
         {gender && goal && (
-          <div className="alert alert-success mt-4" role="alert">
-            You selected <strong>{gender}</strong> and your goal is <strong>{goal}</strong>.
+          <div className="selection-msg">
+            You selected <strong>{gender}</strong> & goal <strong>{goal}</strong>.
           </div>
         )}
 
-        <div className="text-center">
-          <button
-            className="btn btn-success mt-3 px-4"
-            disabled={!gender || !goal}
-            onClick={handleContinue} // ✅ redirects to /signin
-          >
-            Continue
-          </button>
-        </div>
+        <button
+          className="continue-btn"
+          onClick={handleContinue}
+          disabled={!gender || !goal}
+        >
+          Continue
+        </button>
       </div>
     </main>
   );

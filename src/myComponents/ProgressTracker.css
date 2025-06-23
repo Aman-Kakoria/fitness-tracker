@@ -1,12 +1,60 @@
+.progress-tracker {
+  min-height: 100vh;
+  padding: 80px 32px 32px 32px;
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .progress-tracker h2 {
-  color: #2c3e50;
+  color: #ffffff;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
-.progress-tracker .card {
-  border-radius: 10px;
+.progress-tracker .subtext {
+  font-size: 1.1rem;
+  color: #e0f7fa;
 }
 
-.progress-tracker .card-title {
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card .card-title {
+  font-size: 1.5rem;
   font-weight: bold;
-  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.glass-card .card-text {
+  font-size: 1.1rem;
+}
+
+.highlight {
+  font-weight: 600;
+  margin-top: 0.8rem;
+}
+
+.highlight.success {
+  color: #9effc2;
+}
+
+.highlight.primary {
+  color: #b2e0ff;
 }

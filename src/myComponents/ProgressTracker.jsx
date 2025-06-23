@@ -3,29 +3,29 @@ import './ProgressTracker.css';
 
 export default function ProgressTracker() {
   return (
-    <div className="container mt-5 progress-tracker">
-      <div className="text-center mb-4">
-        <h2 className="fw-bold">📊 Your Progress Tracker</h2>
-        <p className="text-muted">Monitor your fitness journey over time</p>
+    <div className="progress-tracker">
+      <div className="text-center mb-5">
+        <h2 className="fw-bold">Your Progress Tracker</h2>
+        <p className="subtext">Monitor your fitness journey over time</p>
       </div>
 
-      <div className="row">
-        <div className="col-md-6 mb-4">
-          <div className="card shadow-sm h-100">
-            <div className="card-body text-center">
-              <h5 className="card-title">Weekly Summary</h5>
-              <p className="card-text">You've worked out 5 days this week!</p>
-              <p className="text-success">🔥 Great consistency!</p>
+      <div className="container">
+        <div className="row g-4 justify-content-center">
+          {/* Weekly Summary */}
+          <div className="col-md-6">
+            <div className="card glass-card text-center p-4">
+              <h4 className="card-title">Weekly Summary</h4>
+              <p className="card-text">You've worked out <strong>5 days</strong> this week!</p>
+              <p className="highlight success">Great consistency!</p>
             </div>
           </div>
-        </div>
 
-        <div className="col-md-6 mb-4">
-          <div className="card shadow-sm h-100">
-            <div className="card-body text-center">
-              <h5 className="card-title">Monthly Summary</h5>
-              <p className="card-text">Total calories burned: 10,250 kcal</p>
-              <p className="text-primary">🚀 Keep pushing your limits!</p>
+          {/* Monthly Summary */}
+          <div className="col-md-6">
+            <div className="card glass-card text-center p-4">
+              <h4 className="card-title">Monthly Summary</h4>
+              <p className="card-text">Total calories burned: <strong>10,250 kcal</strong></p>
+              <p className="highlight primary">Keep pushing your limits!</p>
             </div>
           </div>
         </div>

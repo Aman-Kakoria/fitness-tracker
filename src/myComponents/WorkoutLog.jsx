@@ -9,28 +9,21 @@ export default function WorkoutLog() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Workout Added:
-Type: ${workoutType}
-Duration: ${duration} mins
-Intensity: ${intensity}
-Date: ${date}`);
-    // You can add your backend POST call here
+    alert(`Workout Added:\nType: ${workoutType}\nDuration: ${duration} mins\nIntensity: ${intensity}\nDate: ${date}`);
+    // TODO: Integrate with backend
   };
 
   return (
-    <div className="workout-container container mt-5">
-      <div className="card shadow p-4">
-        <h2 className="text-center mb-4">🏋️ Daily Workout Log</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Workout Type</label>
-            <select
-              className="form-select"
-              value={workoutType}
-              onChange={(e) => setWorkoutType(e.target.value)}
-              required
-            >
-              <option value="">-- Select Workout --</option>
+    <div className="workout-bg">
+      <div className="workout-glass">
+        <h2 className="title">Workout Log</h2>
+        <p className="subtitle">Track your fitness journey</p>
+
+        <form onSubmit={handleSubmit} className="workout-form">
+          <div className="form-group">
+            <label>Workout Type</label>
+            <select value={workoutType} onChange={(e) => setWorkoutType(e.target.value)} required>
+              <option value="">Choose Workout</option>
               <option>Running</option>
               <option>Yoga</option>
               <option>Cycling</option>
@@ -39,45 +32,39 @@ Date: ${date}`);
             </select>
           </div>
 
-          <div className="mb-3">
-            <label className="form-label">Duration (minutes)</label>
+          <div className="form-group">
+            <label>Duration (minutes)</label>
             <input
               type="number"
-              className="form-control"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              required
+              placeholder="Enter duration"
               min="1"
+              required
             />
           </div>
 
-          <div className="mb-3">
-            <label className="form-label">Intensity</label>
-            <select
-              className="form-select"
-              value={intensity}
-              onChange={(e) => setIntensity(e.target.value)}
-              required
-            >
-              <option value="">-- Select Intensity --</option>
+          <div className="form-group">
+            <label>Intensity</label>
+            <select value={intensity} onChange={(e) => setIntensity(e.target.value)} required>
+              <option value="">Select Intensity</option>
               <option>Low</option>
               <option>Medium</option>
               <option>High</option>
             </select>
           </div>
 
-          <div className="mb-3">
-            <label className="form-label">Date</label>
+          <div className="form-group">
+            <label>Date</label>
             <input
               type="date"
-              className="form-control"
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
             />
           </div>
 
-          <button type="submit" className="btn btn-success w-100">
+          <button type="submit" className="glass-button">
             Add Workout
           </button>
         </form>
