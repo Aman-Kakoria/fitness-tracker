@@ -1,0 +1,45 @@
+.glass-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  background: rgba(0, 0, 0, 0.4); /* darker glass */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 0.6rem 1rem;
+}
+
+/* Brand */
+.navbar-brand {
+  font-size: 1.6rem;
+  color: #00e676 !important;
+  font-weight: bold;
+}
+
+/* Navigation links */
+.navbar-nav .nav-link {
+  color: #ffffff !important;
+  font-weight: 500;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #00e676 !important;
+}
+
+/* Sign In button */
+.btn-signin {
+  background-color: #00e676;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  color: #000 !important;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-signin:hover {
+  background-color: #00c853;
+  color: #fff !important;
+}
