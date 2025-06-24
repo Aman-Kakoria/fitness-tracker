@@ -27,6 +27,6 @@ export class AuthController {
       res.json({ message: 'Sign in successful', token: 'dummy_token' });
     } catch (err) {
       res.status(500).json({ error: 'Server error' });
-    }
+    }//...
   }
 }

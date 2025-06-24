@@ -5,12 +5,12 @@ function ProgressTracker() {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    fetch('http://192.168.1.4:3000/workout/history')
+    fetch('http://localhost:3000/workout/history')
       .then(res => res.json())
       .then(data => setWorkouts(data));
   }, []);
 
-  const now = new Date();
+  const now = new Date();//.....
   const weekAgo = new Date();
   weekAgo.setDate(now.getDate() - 7);
 
@@ -105,4 +105,4 @@ function ProgressTracker() {
   );
 }
 
-export default ProgressTracker;
+export default ProgressTracker;//......

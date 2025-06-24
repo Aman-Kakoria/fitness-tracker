@@ -7,4 +7,4 @@ export function setRoutes(app: express.Application) {
   app.use('/auth', authRoutes);
   app.use('/workout', workoutRoutes);
   app.use('/achievement', achievementRoutes);
-}
+}//..

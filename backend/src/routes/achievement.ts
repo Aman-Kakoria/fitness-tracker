@@ -6,4 +6,4 @@ const achievementController = new AchievementController();
 
 router.get('/unlocked', achievementController.getUnlockedAchievements.bind(achievementController));
 
-export default router;
+export default router;//..

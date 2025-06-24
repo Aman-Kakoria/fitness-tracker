@@ -12,8 +12,8 @@ function SignIn({ setIsLoggedIn }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const url = isSignUp
-      ? 'http://192.168.1.4:3000/auth/signup'
-      : 'http://192.168.1.4:3000/auth/signin';
+      ? 'http://localhost:3000/auth/signup'
+      : 'http://localhost:3000/auth/signin';//....
     const payload = isSignUp
       ? { name, phone, password }
       : { phone, password };
@@ -84,4 +84,4 @@ function SignIn({ setIsLoggedIn }) {
   );
 }
 
-export default SignIn;
+export default SignIn;//....
