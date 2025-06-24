@@ -9,7 +9,7 @@ export default function WorkoutLog() {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/workout/history')
+    fetch('http://192.168.1.4:3000/workout/history')
       .then(res => res.json())
       .then(data => setHistory(data));
   }, []);
@@ -47,7 +47,7 @@ export default function WorkoutLog() {
       date,
       calories
     };
-    const res = await fetch('http://localhost:3000/workout/add', {
+    const res = await fetch('http://192.168.1.4:3000/workout/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(workout)
@@ -57,7 +57,7 @@ export default function WorkoutLog() {
       setDuration('');
       setIntensity('');
       setDate(new Date().toISOString().split('T')[0]);
-      fetch('http://localhost:3000/workout/history')
+      fetch('http://192.168.1.4:3000/workout/history')
         .then(res => res.json())
         .then(data => setHistory(data));
     }

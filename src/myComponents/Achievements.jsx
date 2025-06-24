@@ -24,7 +24,7 @@ export default function Achievements() {
   const [unlocked, setUnlocked] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/achievement/unlocked')
+    fetch('http://192.168.1.4:3000/achievement/unlocked')
       .then(res => res.json())
       .then(data => setUnlocked(data.map(a => a.title)));
   }, []);

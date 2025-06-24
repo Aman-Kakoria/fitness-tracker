@@ -5,7 +5,7 @@ function ProgressTracker() {
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/workout/history')
+    fetch('http://192.168.1.4:3000/workout/history')
       .then(res => res.json())
       .then(data => setWorkouts(data));
   }, []);
