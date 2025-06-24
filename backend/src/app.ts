@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const MONGO_URI = 'mongodb://localhost:27017/fittrack';
+const MONGO_URI = 'mongodb+srv://aman:amanaman07@cluster0.oq7jdad.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 const indexController = new IndexController();
 
