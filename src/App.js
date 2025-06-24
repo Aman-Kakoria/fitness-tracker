@@ -8,18 +8,50 @@ import Dashboard from './myComponents/Dashboard';
 import WorkoutLog from './myComponents/WorkoutLog';
 import ProgressTracker from './myComponents/ProgressTracker';
 import Achievements from './myComponents/Achievements';
+import useIsLoggedIn from './myComponents/IsLoggedIn';
+import ProtectedRoute from './myComponents/ProtectedRoute';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+
   return (
     <Router>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/workout-log" element={<WorkoutLog />} />
-        <Route path="/progress-tracker" element={<ProgressTracker />} />
-        <Route path="/achievements" element={<Achievements />} />
+        <Route path="/signin" element={<SignIn setIsLoggedIn={setIsLoggedIn} />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/workout-log"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <WorkoutLog />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/progress-tracker"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <ProgressTracker />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/achievements"
+          element={
+            <ProtectedRoute isLoggedIn={isLoggedIn}>
+              <Achievements />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </Router>

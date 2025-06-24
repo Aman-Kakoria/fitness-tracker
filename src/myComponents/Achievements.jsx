@@ -2,6 +2,16 @@ import React from 'react';
 import './Achievements.css';
 
 export default function Achievements() {
+  const achievements = [
+    { title: "First Workout", desc: "Logged your first workout!" },
+    { title: "Consistency Champ", desc: "Worked out 7 days in a row!" },
+    { title: "Early Bird", desc: "Completed a workout before 7am!" },
+    { title: "Marathoner", desc: "Ran a total of 42km!" },
+    { title: "Strength Builder", desc: "Lifted a total of 1000kg!" },
+    { title: "Hydration Hero", desc: "Logged water intake for 30 days!" },
+    { title: "Goal Crusher", desc: "Achieved your monthly goal!" },
+  ];
+
   return (
     <div className="achievements">
       <div className="text-center mb-5">
@@ -11,28 +21,16 @@ export default function Achievements() {
 
       <div className="container">
         <div className="row g-4 justify-content-center">
-          {/* Achievement 1 */}
-          <div className="col-md-4">
-            <div className="card glass-card text-center p-4 border-success">
-              <h4 className="card-title">First Workout</h4>
-              <p className="card-text">You logged your first workout!</p>
-            </div>
-          </div>
-
-          {/* Achievement 2 */}
-          <div className="col-md-4">
-            <div className="card glass-card text-center p-4 border-warning">
-              <h4 className="card-title">1000 Calories Burned</h4>
-              <p className="card-text">You crossed the 1,000 kcal mark!</p>
-            </div>
-          </div>
-
-          {/* Achievement 3 */}
-          <div className="col-md-4">
-            <div className="card glass-card text-center p-4 border-primary">
-              <h4 className="card-title">Consistency Star</h4>
-              <p className="card-text">Worked out 7 days in a row!</p>
-            </div>
+          {/* Achievement List */}
+          <div className="col-md-8">
+            <ul className="list-group">
+              {achievements.map((ach, idx) => (
+                <li key={idx} className="list-group-item">
+                  <strong>{ach.title}</strong>
+                  <div>{ach.desc}</div>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
