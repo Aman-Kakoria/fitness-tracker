@@ -9,16 +9,32 @@ function SignIn({ setIsLoggedIn }) {
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    localStorage.setItem('authToken', 'dummy_token');
-    setIsLoggedIn(true);
-    if (isSignUp) {
-      alert(`Signed up:\nName: ${name}\nPhone: ${phone}`);
-    } else {
-      alert(`Logged in:\nPhone: ${phone}`);
+    const url = isSignUp
+      ? 'http://localhost:3000/auth/signup'
+      : 'http://localhost:3000/auth/signin';
+    const payload = isSignUp
+      ? { name, phone, password }
+      : { phone, password };
+
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('authToken', data.token);
+        setIsLoggedIn(true);
+        navigate('/dashboard');
+      } else {
+        alert(data.error || 'Authentication failed');
+      }
+    } catch (err) {
+      alert('Server error');
     }
-    navigate("/dashboard");
   }
 
   return (

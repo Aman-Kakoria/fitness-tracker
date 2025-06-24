@@ -1,10 +1,10 @@
-import { Router } from 'express';
-import { IndexController } from '../controllers';
+import express from 'express';
+import authRoutes from './auth';
+import workoutRoutes from './workout';
+import achievementRoutes from './achievement';
 
-const router = Router();
-const indexController = new IndexController();
-
-export function setRoutes(app) {
-    app.use('/', router);
-    router.get('/', indexController.getIndex.bind(indexController));
+export function setRoutes(app: express.Application) {
+  app.use('/auth', authRoutes);
+  app.use('/workout', workoutRoutes);
+  app.use('/achievement', achievementRoutes);
 }

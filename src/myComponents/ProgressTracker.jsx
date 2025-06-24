@@ -2,22 +2,39 @@ import React, { useEffect, useState } from 'react';
 import './ProgressTracker.css';
 
 function ProgressTracker() {
-  const [activities, setActivities] = useState([]);
+  const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem('activities');
-    if (stored) {
-      setActivities(JSON.parse(stored));
-    }
+    fetch('http://localhost:3000/workout/history')
+      .then(res => res.json())
+      .then(data => setWorkouts(data));
   }, []);
 
+  const now = new Date();
+  const weekAgo = new Date();
+  weekAgo.setDate(now.getDate() - 7);
+
+  const workoutsThisWeek = workouts.filter(w => {
+    const workoutDate = new Date(w.date);
+    return workoutDate >= weekAgo && workoutDate <= now;
+  }).length;
+
+  const totalCalories = workouts.reduce((sum, w) => sum + (Number(w.calories) || 0), 0);
+
+  const totalDistance = workouts
+    .filter(w => w.type && (w.type.toLowerCase() === 'running' || w.type.toLowerCase() === 'cycling'))
+    .reduce((sum, w) => sum + (Number(w.distance) || 0), 0);
+
+  const totalDuration = workouts.reduce((sum, w) => sum + (Number(w.duration) || 0), 0);
+
+  const activeDays = new Set(workouts.map(w => w.date)).size;
+
   const progress = [
-    { label: "Workouts This Week", value: 5, goal: 7 },
-    { label: "Total Distance (km)", value: 18, goal: 25 },
-    { label: "Calories Burned", value: 3200, goal: 4000 },
-    { label: "Water Intake (L)", value: 12, goal: 14 },
-    { label: "Active Days This Month", value: 15, goal: 20 },
-    { label: "Personal Best (Pushups)", value: 40, goal: 50 }
+    { label: "Workouts This Week", value: workoutsThisWeek, goal: 7 },
+    { label: "Total Calories Burned", value: totalCalories, goal: 4000 },
+    { label: "Total Distance (km)", value: totalDistance, goal: 25 },
+    { label: "Total Duration (min)", value: totalDuration, goal: 600 },
+    { label: "Active Days", value: activeDays, goal: 20 }
   ];
 
   return (
@@ -29,9 +46,9 @@ function ProgressTracker() {
       <div className="container">
         <div className="row mb-5">
           <div className="col-12">
-            <h3 className="text-center">Activity History</h3>
-            {activities.length === 0 ? (
-              <p className="text-center">No activities logged yet.</p>
+            <h3 className="text-center">Workout History</h3>
+            {workouts.length === 0 ? (
+              <p className="text-center">No workouts logged yet.</p>
             ) : (
               <table className="table table-bordered">
                 <thead>
@@ -39,16 +56,20 @@ function ProgressTracker() {
                     <th>Date</th>
                     <th>Type</th>
                     <th>Duration (min)</th>
+                    <th>Intensity</th>
                     <th>Calories</th>
+                    <th>Distance (km)</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {activities.map((act, idx) => (
+                  {workouts.map((w, idx) => (
                     <tr key={idx}>
-                      <td>{act.date}</td>
-                      <td>{act.type}</td>
-                      <td>{act.duration}</td>
-                      <td>{act.calories}</td>
+                      <td>{w.date}</td>
+                      <td>{w.type}</td>
+                      <td>{w.duration}</td>
+                      <td>{w.intensity}</td>
+                      <td>{w.calories || '-'}</td>
+                      <td>{w.distance || '-'}</td>
                     </tr>
                   ))}
                 </tbody>
